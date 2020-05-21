@@ -1,8 +1,36 @@
 .App {
   text-align: center;
+  font-family: Roboto;
 }
 
 .App-header {
+  font-size: 28px;
+  margin: 20px;
+  font-weight: 600;
+}
+.select-container {
 
 }
 
+#team1, #team2 {
+  margin-bottom: 20px;
+  width: 200px;
+}
+
+.card-container {
+  display: inline-block;
+}
+.player-card {
+  position: relative;
+  border: solid 1px #efefef;
+  border-radius: 3px;
+  min-width: 200px;
+  padding: 30px;
+  cursor: pointer;
+}
+
+.player-jersey {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
