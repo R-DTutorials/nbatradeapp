@@ -4,7 +4,7 @@ import data from './data';
 import './App.css';
 
 const getTeamsDropdown = (teams) => {
-    return teams && teams.map(franchise => <option key={franchise.team.team_code} value={franchise.team.team_code}>{franchise.team.team_code}</option>)
+    return teams && teams.map(franchise => <option key={franchise.team.team_code} value={franchise.team.team_code}>{`${franchise.team.team_city} ${franchise.team.team_nickname}`}</option>)
 };
 
 class App extends Component {
@@ -31,17 +31,60 @@ class App extends Component {
         });
     }
 
+    executeTrade() {
+        const { allTeams, team1, team2, left, right } = this.state;
+        let elementIndex1 = null;
+        let elementIndex2 = null;
+        allTeams.forEach((franchise, index) => {
+            if (franchise.team.team_code === team1) {
+                elementIndex1 = index;
+            }
+            if (franchise.team.team_code === team2) {
+                elementIndex2 = index;
+            }
+        });
+        let updatedTeams = [...allTeams];
+        updatedTeams[elementIndex1].players = updatedTeams[elementIndex1].players.map((player) => {
+            if (player.person_id === left.person_id) {
+                return right;
+            }
+            return player;
+        });
+        updatedTeams[elementIndex2].players = updatedTeams[elementIndex2].players.map((player) => {
+            if (player.person_id === right.person_id) {
+                return left;
+            }
+            return player;
+        });
+        this.setState({
+            allTeams: updatedTeams,
+        });
+    }
+
+    renderTradeButton() {
+        const { left, right } = this.state;
+        if (left && right) {
+          return (
+              <div className="trade-button" onClick={() => this.executeTrade()}>
+                  Trade
+              </div>
+          )
+        }
+    }
+
     renderPlayers(team, side) {
         const franchise = this.state.allTeams.filter((franchise) => franchise.team.team_code === team);
         return (
             <div className="card-container">
-                {franchise[0].players.player.map((player) => {
+                {franchise[0].players.map((player) => {
                     const { first_name, last_name, jersey_number, person_id } = player;
                     const selected = this.state[side].person_id === person_id ? 'selected' : '';
+                    const tradeButton = selected && this.renderTradeButton();
                     return (
                         <div className={`player-card ${selected}`} onClick={() => this.selectPlayer(player, side)}>
                             <span className="player-name">{`${first_name} ${last_name}`}</span>
                             <span className="player-jersey">{`#${jersey_number}`}</span>
+                            {tradeButton}
                         </div>
                     );
                 })}

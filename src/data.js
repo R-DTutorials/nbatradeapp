@@ -7,8 +7,7 @@ module.exports = [
 			"team_city": "Atlanta",
 			"team_nickname": "Hawks"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "DeAndre'",
 					"last_name": "Bembry",
@@ -425,8 +424,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "1629027"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -488,8 +486,7 @@ module.exports = [
 			"team_city": "Brooklyn",
 			"team_nickname": "Nets"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Jarrett",
 					"last_name": "Allen",
@@ -932,8 +929,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "202066"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -995,8 +991,7 @@ module.exports = [
 			"team_city": "Charlotte",
 			"team_nickname": "Hornets"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Dwayne",
 					"last_name": "Bacon",
@@ -1413,8 +1408,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "203469"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -1476,8 +1470,7 @@ module.exports = [
 			"team_city": "Chicago",
 			"team_nickname": "Bulls"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Ryan",
 					"last_name": "Arcidiacono",
@@ -1920,8 +1913,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "201152"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -1991,8 +1983,7 @@ module.exports = [
 			"team_city": "Cleveland",
 			"team_nickname": "Cavaliers"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Matthew",
 					"last_name": "Dellavedova",
@@ -2435,8 +2426,7 @@ module.exports = [
 					"elias_country": "Croatia",
 					"person_id": "1627790"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -2482,8 +2472,7 @@ module.exports = [
 			"team_city": "Dallas",
 			"team_nickname": "Mavericks"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "J.J.",
 					"last_name": "Barea",
@@ -2926,8 +2915,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "1626153"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -3013,8 +3001,7 @@ module.exports = [
 			"team_city": "Boston",
 			"team_nickname": "Celtics"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Jaylen",
 					"last_name": "Brown",
@@ -3457,8 +3444,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "1629057"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -3536,8 +3522,7 @@ module.exports = [
 			"team_city": "Detroit",
 			"team_nickname": "Pistons"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Jordan",
 					"last_name": "Bone",
@@ -3980,8 +3965,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "1626174"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -4043,8 +4027,7 @@ module.exports = [
 			"team_city": "Denver",
 			"team_nickname": "Nuggets"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Will",
 					"last_name": "Barton",
@@ -4461,8 +4444,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "203943"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -4532,8 +4514,7 @@ module.exports = [
 			"team_city": "Golden State",
 			"team_nickname": "Warriors"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Dragan",
 					"last_name": "Bender",
@@ -4924,8 +4905,7 @@ module.exports = [
 					"elias_country": "Canada",
 					"person_id": "203952"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -4987,8 +4967,7 @@ module.exports = [
 			"team_city": "Los Angeles",
 			"team_nickname": "Lakers"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Kostas",
 					"last_name": "Antetokounmpo",
@@ -5431,8 +5410,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "203079"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -5510,8 +5488,7 @@ module.exports = [
 			"team_city": "Houston",
 			"team_nickname": "Rockets"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Bruno",
 					"last_name": "Caboclo",
@@ -5954,8 +5931,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "201566"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -6025,8 +6001,7 @@ module.exports = [
 			"team_city": "Memphis",
 			"team_nickname": "Grizzlies"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Grayson",
 					"last_name": "Allen",
@@ -6443,8 +6418,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "1626159"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -6514,8 +6488,7 @@ module.exports = [
 			"team_city": "LA",
 			"team_nickname": "Clippers"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Patrick",
 					"last_name": "Beverley",
@@ -6958,8 +6931,7 @@ module.exports = [
 					"elias_country": "Bosnia & Herzegovina",
 					"person_id": "1627826"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -7053,8 +7025,7 @@ module.exports = [
 			"team_city": "Miami",
 			"team_nickname": "Heat"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Bam",
 					"last_name": "Adebayo",
@@ -7497,8 +7468,7 @@ module.exports = [
 					"elias_country": "",
 					"person_id": "1629216"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -7560,8 +7530,7 @@ module.exports = [
 			"team_city": "Philadelphia",
 			"team_nickname": "76ers"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Alec",
 					"last_name": "Burks",
@@ -7978,8 +7947,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "1629680"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -8033,8 +8001,7 @@ module.exports = [
 			"team_city": "Indiana",
 			"team_nickname": "Pacers"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Goga",
 					"last_name": "Bitadze",
@@ -8477,8 +8444,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "203933"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -8548,8 +8514,7 @@ module.exports = [
 			"team_city": "Milwaukee",
 			"team_nickname": "Bucks"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Giannis",
 					"last_name": "Antetokounmpo",
@@ -8992,8 +8957,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "1628391"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -9079,8 +9043,7 @@ module.exports = [
 			"team_city": "New Orleans",
 			"team_nickname": "Pelicans"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Nickeil",
 					"last_name": "Alexander-Walker",
@@ -9523,8 +9486,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "1629627"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -9586,8 +9548,7 @@ module.exports = [
 			"team_city": "Minnesota",
 			"team_nickname": "Timberwolves"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Malik",
 					"last_name": "Beasley",
@@ -10004,8 +9965,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "1629020"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -10075,8 +10035,7 @@ module.exports = [
 			"team_city": "New York",
 			"team_nickname": "Knicks"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Kadeem",
 					"last_name": "Allen",
@@ -10519,8 +10478,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "1629624"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -10590,8 +10548,7 @@ module.exports = [
 			"team_city": "Orlando",
 			"team_nickname": "Magic"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Al-Farouq",
 					"last_name": "Aminu",
@@ -11034,8 +10991,7 @@ module.exports = [
 					"elias_country": "Montenegro",
 					"person_id": "202696"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -11097,8 +11053,7 @@ module.exports = [
 			"team_city": "Oklahoma City",
 			"team_nickname": "Thunder"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Steven",
 					"last_name": "Adams",
@@ -11515,8 +11470,7 @@ module.exports = [
 					"elias_country": "Germany",
 					"person_id": "203471"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -11594,8 +11548,7 @@ module.exports = [
 			"team_city": "Portland",
 			"team_nickname": "Trail Blazers"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Carmelo",
 					"last_name": "Anthony",
@@ -12012,8 +11965,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "202355"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -12083,8 +12035,7 @@ module.exports = [
 			"team_city": "Sacramento",
 			"team_nickname": "Kings"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Marvin",
 					"last_name": "Bagley III",
@@ -12501,8 +12452,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "203953"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -12604,8 +12554,7 @@ module.exports = [
 			"team_city": "San Antonio",
 			"team_nickname": "Spurs"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "LaMarcus",
 					"last_name": "Aldridge",
@@ -13022,8 +12971,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "1628401"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -13093,8 +13041,7 @@ module.exports = [
 			"team_city": "Phoenix",
 			"team_nickname": "Suns"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Deandre",
 					"last_name": "Ayton",
@@ -13511,8 +13458,7 @@ module.exports = [
 					"elias_country": "Croatia",
 					"person_id": "203967"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -13582,8 +13528,7 @@ module.exports = [
 			"team_city": "Toronto",
 			"team_nickname": "Raptors"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "OG",
 					"last_name": "Anunoby",
@@ -14026,8 +13971,7 @@ module.exports = [
 					"elias_country": "",
 					"person_id": "1628778"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -14121,8 +14065,7 @@ module.exports = [
 			"team_city": "Washington",
 			"team_nickname": "Wizards"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Bradley",
 					"last_name": "Beal",
@@ -14565,8 +14508,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "1629140"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -14636,8 +14578,7 @@ module.exports = [
 			"team_city": "Utah",
 			"team_nickname": "Jazz"
 		},
-		"players": {
-			"player": [
+		"players": [
 				{
 					"first_name": "Bojan",
 					"last_name": "Bogdanovic",
@@ -15080,8 +15021,7 @@ module.exports = [
 					"elias_country": "USA",
 					"person_id": "1629625"
 				}
-			]
-		},
+			],
 		"coaches": {
 			"coach": [
 				{
@@ -15135,4 +15075,4 @@ module.exports = [
 			]
 		}
 	}
-]
+];
