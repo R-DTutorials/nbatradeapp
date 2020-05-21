@@ -1,67 +1,52 @@
 import React , { Component } from 'react';
 import PlayerCard from "./PlayerCard";
+import data from './data';
 import './App.css';
 
 const getTeamsDropdown = (teams) => {
-    return teams && teams.map(team => <option key={team.teamId} value={team.urlName}>{team.fullName}</option>)
+    return teams && teams.map(franchise => <option key={franchise.team.team_code} value={franchise.team.team_code}>{franchise.team.team_code}</option>)
 };
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
-            teams: [],
-            team1: '',
-            team2: '',
+            team1: 'warriors',
+            team2: 'clippers',
+            left: '',
+            right: '',
+            allTeams: data,
         }
+        this.selectPlayer = this.selectPlayer.bind(this);
     }
 
     componentDidMount() {
-        const teamsEndpoint = 'http://data.nba.net/data/10s/prod/v1/2019/teams.json';
-        fetch(teamsEndpoint)
-            .then((res) => res.json())
-            .then((data) => {
-                const teams = data.league.standard.filter((team) => team.isNBAFranchise);
-                this.setState({ teams });
-            });
-        this.getPlayersOnTeam('team1players', 'hawks');
-        this.getPlayersOnTeam('team2players', 'hawks');
-    }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log(nextState)
-        if (nextState.team1 !== this.state.team1) {
-            this.getPlayersOnTeam('team1players', nextState.team1);
-        }
-        if (nextState.team2 !== this.state.team2) {
-            this.getPlayersOnTeam('team2players', nextState.team2);
-        }
-        return true;
-    }
-
-    getPlayersOnTeam(choice, team) {
-        const teamEndpoint = `http://data.nba.net/json/cms/noseason/team/${team}/roster.json`;
-        fetch(teamEndpoint)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log("i", data)
-                this.setState({
-                    [choice]: data.sports_content.roster.players.player,
-                });
-            });
     }
 
     setTeam(e, team) {
         this.setState({ [team]: e.target.value });
     }
 
-    renderPlayers(players) {
+    selectPlayer(player, side) {
+        console.log(player)
+        this.setState({
+            [side]: player,
+        });
+    }
+
+    renderPlayers(team, side) {
+
+        const { allTeams, left, right } = this.state;
+        const franchise = allTeams.filter((franchise) => franchise.team.team_code === team);
         return (
             <div className="card-container">
-                {players.map((player) => {
-                    const { first_name, last_name, jersey_number } = player;
+                {franchise[0].players.player.map((player) => {
+                    const { first_name, last_name, jersey_number, person_id } = player;
+                    const team = franchise[0].team.team_code;
+                    const selected = this.state[side].person_id === person_id ? 'selected' : '';
                     return (
-                        <div className="player-card">
+                        <div className={`player-card ${selected}`} onClick={() => this.selectPlayer(player, side)}>
                             <span className="player-name">{`${first_name} ${last_name}`}</span>
                             <span className="player-jersey">{`#${jersey_number}`}</span>
                         </div>
@@ -72,21 +57,19 @@ class App extends Component {
     }
 
     render() {
-        const { teams, team1players, team2players } = this.state;
-        let playerCards1, playerCards2 = null;
-        if (team1players && team2players) {
-            playerCards1 = this.renderPlayers(team1players);
-            playerCards2 = this.renderPlayers(team2players);
-        }
+        const { allTeams, team1, team2 } = this.state;
+        const playerCards1 = this.renderPlayers(team1, 'left');
+        const playerCards2 = this.renderPlayers(team2, 'right');
+        console.log(this.state)
         return (
             <div className="App">
                 <header className="App-header">NBA Trade App</header>
                 <div className="select-container">
                     <select name="team1" id="team1" onChange={ (e) => this.setTeam(e, 'team1') } value={this.state.team1}>
-                        { getTeamsDropdown(teams.filter(team => team.urlName !== this.state.team2)) }
+                        {getTeamsDropdown(allTeams.filter(franchise => franchise.team.team_code !== this.state.team2))}
                     </select>
                     <select name="team2" id="team2" onChange={ (e) => this.setTeam(e, 'team2') } value={this.state.team2}>
-                        { getTeamsDropdown(teams.filter(team => team.urlName !== this.state.team1)) }
+                        {getTeamsDropdown(allTeams.filter(franchise => franchise.team.team_code !== this.state.team1))}
                     </select>
                 </div>
                {playerCards1}
