@@ -14,11 +14,15 @@
 
 #team1, #team2 {
   margin-bottom: 20px;
-  width: 200px;
+  width: 262px;
+  margin: 20px 10px 10px 10px;
 }
+
 
 .card-container {
   display: inline-block;
+  overflow-y: scroll;
+  height: 800px;
 }
 .player-card {
   position: relative;
@@ -27,6 +31,15 @@
   min-width: 200px;
   padding: 30px;
   cursor: pointer;
+  margin: 0px 10px 10px 10px;
+}
+
+.player-card.selected {
+  border-color: forestgreen;
+}
+
+.player-card:hover {
+  border-color: #282C34;
 }
 
 .player-jersey {
