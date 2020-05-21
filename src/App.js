@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React , { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    componentDidMount() {
+
+    }
+    render() {
+        return (
+            <div className="App">
+                <header className="App-header">NBA Trade App</header>
+                <select name="team1" id="team1">
+                    <option value="Golden State Warriors">Golden State Warriors</option>
+                </select>
+                <select name="team2" id="team2">
+                    <option value="Los Angeles Clippers">Los Angeles Clippers</option>
+                </select>
+            </div>
+        )
+    }
 }
 
 export default App;
