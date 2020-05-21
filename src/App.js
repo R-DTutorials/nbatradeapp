@@ -20,10 +20,6 @@ class App extends Component {
         this.selectPlayer = this.selectPlayer.bind(this);
     }
 
-    componentDidMount() {
-
-    }
-
     setTeam(e, team) {
         this.setState({ [team]: e.target.value });
     }
@@ -36,14 +32,11 @@ class App extends Component {
     }
 
     renderPlayers(team, side) {
-
-        const { allTeams, left, right } = this.state;
-        const franchise = allTeams.filter((franchise) => franchise.team.team_code === team);
+        const franchise = this.state.allTeams.filter((franchise) => franchise.team.team_code === team);
         return (
             <div className="card-container">
                 {franchise[0].players.player.map((player) => {
                     const { first_name, last_name, jersey_number, person_id } = player;
-                    const team = franchise[0].team.team_code;
                     const selected = this.state[side].person_id === person_id ? 'selected' : '';
                     return (
                         <div className={`player-card ${selected}`} onClick={() => this.selectPlayer(player, side)}>
