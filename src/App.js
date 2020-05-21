@@ -2,7 +2,7 @@ import React , { Component } from 'react';
 import './App.css';
 
 const getTeamsDropdown = (teams) => {
-    return teams && teams.map(team => <option value={team.teamId}>{team.fullName}</option>)
+    return teams && teams.map(team => <option value={team.fullName}>{team.fullName}</option>)
 };
 
 class App extends Component {
@@ -34,14 +34,12 @@ class App extends Component {
         return (
             <div className="App">
                 <header className="App-header">NBA Trade App</header>
-                <div>
-                    <select name="team1" id="team1" onChange={ (e) => this.setTeam(e, 'team1') }>
-                        { getTeamsDropdown(this.state.teams.filter(team => team.teamId !== this.state.team2)) }
-                    </select>
-                    <select name="team2" id="team2" onChange={ (e) => this.setTeam(e, 'team2') }>
-                        { getTeamsDropdown(this.state.teams.filter(team => team.teamId !== this.state.team1)) }
-                    </select>
-                </div>
+                <select name="team1" id="team1" onChange={ (e) => this.setTeam(e, 'team1') } value={this.state.team1}>
+                    { getTeamsDropdown(this.state.teams.filter(team => team.fullName !== this.state.team2)) }
+                </select>
+                <select name="team2" id="team2" onChange={ (e) => this.setTeam(e, 'team2') } value={this.state.team2}>
+                    { getTeamsDropdown(this.state.teams.filter(team => team.fullName !== this.state.team1)) }
+                </select>
             </div>
         )
     }
