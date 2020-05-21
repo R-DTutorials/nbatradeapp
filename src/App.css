@@ -14,8 +14,9 @@
 
 #team1, #team2 {
   margin-bottom: 20px;
-  width: 262px;
+  width: 302px;
   margin: 20px 10px 10px 10px;
+  height: 40px;
 }
 
 
@@ -29,7 +30,7 @@
   border: solid 1px #efefef;
   border-radius: 3px;
   min-width: 200px;
-  padding: 30px;
+  padding: 50px;
   cursor: pointer;
   margin: 0px 10px 10px 10px;
 }
@@ -46,4 +47,10 @@
   position: absolute;
   top: 10px;
   left: 10px;
+}
+
+.trade-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
