@@ -1,11 +1,17 @@
 import React , { Component } from 'react';
 import './App.css';
 
+const getTeamsDropdown = (teams) => {
+    return teams && teams.map(team => <option value={team.fullName}>{team.fullName}</option>)
+};
+
 class App extends Component {
     constructor() {
         super();
         this.state = {
             teams: [],
+            team1: '',
+            team2: ''
         }
     }
 
@@ -19,16 +25,20 @@ class App extends Component {
             });
     }
 
+    setTeam(e, team) {
+        this.setState({ [team]: e.target.value });
+    }
+
     render() {
         console.log(this.state)
         return (
             <div className="App">
                 <header className="App-header">NBA Trade App</header>
-                <select name="team1" id="team1">
-                    <option value="Golden State Warriors">Golden State Warriors</option>
+                <select name="team1" id="team1" onChange={ (e) => this.setTeam(e, 'team1') } value={this.state.team1}>
+                    { getTeamsDropdown(this.state.teams.filter(team => team.fullName !== this.state.team2)) }
                 </select>
-                <select name="team2" id="team2">
-                    <option value="Los Angeles Clippers">Los Angeles Clippers</option>
+                <select name="team2" id="team2" onChange={ (e) => this.setTeam(e, 'team2') } value={this.state.team2}>
+                    { getTeamsDropdown(this.state.teams.filter(team => team.fullName !== this.state.team1)) }
                 </select>
             </div>
         )
