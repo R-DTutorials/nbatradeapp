@@ -36,8 +36,9 @@ class App extends Component {
 
     selectPlayer(player, side) {
         console.log(player)
+        const currentPlayerId = this.state[side].person_id;
         this.setState({
-            [side]: player,
+            [side]: currentPlayerId !== player.person_id ? player : '',
         });
     }
 
