@@ -66,7 +66,7 @@ class App extends Component {
         if (left && right) {
           return (
               <div className="trade-button" onClick={() => this.executeTrade()}>
-                  Trade
+                  <span className="trade-symbol">&#8594;</span>
               </div>
           )
         }
@@ -77,13 +77,25 @@ class App extends Component {
         return (
             <div className="card-container">
                 {franchise[0].players.map((player) => {
-                    const { first_name, last_name, jersey_number, person_id } = player;
+                    const {
+                        first_name,
+                        last_name,
+                        jersey_number,
+                        person_id,
+                        height_ft,
+                        height_in,
+                        position_full,
+                        weight_lbs,
+                    } = player;
                     const selected = this.state[side].person_id === person_id ? 'selected' : '';
                     const tradeButton = selected && this.renderTradeButton();
                     return (
                         <div className={`player-card ${selected}`} onClick={() => this.selectPlayer(player, side)}>
-                            <span className="player-name">{`${first_name} ${last_name}`}</span>
-                            <span className="player-jersey">{`#${jersey_number}`}</span>
+                            <div className="player-name">{`${first_name} ${last_name}`}</div>
+                            <div className="player-jersey">{`Jersey #${jersey_number}`}</div>
+                            <div className="player-position">{`Position: ${position_full}`}</div>
+                            <div className="player-height">{`Height: ${height_ft}"${height_in}`}</div>
+                            <div className="player-weight">{`Weight: ${weight_lbs} lbs`}</div>
                             {tradeButton}
                         </div>
                     );
@@ -99,7 +111,7 @@ class App extends Component {
         console.log(this.state)
         return (
             <div className="App">
-                <header className="App-header">NBA Trade App</header>
+                <header className="App-header">NBA Trade Simulator: Analyze and create customized trade scenarios for NBA teams and players.</header>
                 <div className="select-container">
                     <select name="team1" id="team1" onChange={ (e) => this.setTeam(e, 'team1') } value={this.state.team1}>
                         {getTeamsDropdown(allTeams.filter(franchise => franchise.team.team_code !== this.state.team2))}
@@ -108,8 +120,8 @@ class App extends Component {
                         {getTeamsDropdown(allTeams.filter(franchise => franchise.team.team_code !== this.state.team1))}
                     </select>
                 </div>
-               {playerCards1}
-               {playerCards2}
+                {playerCards1}
+                {playerCards2}
             </div>
         )
     }
