@@ -3,8 +3,17 @@ import PlayerCard from "./PlayerCard";
 import data from './data';
 import './App.css';
 
-const getTeamsDropdown = (teams) => {
-    return teams && teams.map(franchise => <option key={franchise.team.team_code} value={franchise.team.team_code}>{`${franchise.team.team_city} ${franchise.team.team_nickname}`}</option>)
+const playerName = ({ first_name, last_name }) => `${first_name} ${last_name}`;
+
+const getTeamsDropdown = (teams) => (
+    teams && teams.map(({ team }) =>
+        <option key={team.team_code} value={team.team_code}>{`${team.team_city} ${team.team_nickname}`}</option>
+));
+
+const replacePlayer = (roster, tradingAway, tradingFor) => {
+    roster.players = roster.players.map(player => (
+        player.person_id === tradingAway.person_id ? tradingFor : player
+    ));
 };
 
 class App extends Component {
@@ -16,6 +25,7 @@ class App extends Component {
             left: '',
             right: '',
             allTeams: data,
+            tradeHistory: []
         }
         this.selectPlayer = this.selectPlayer.bind(this);
     }
@@ -44,20 +54,11 @@ class App extends Component {
             }
         });
         let updatedTeams = [...allTeams];
-        updatedTeams[elementIndex1].players = updatedTeams[elementIndex1].players.map((player) => {
-            if (player.person_id === left.person_id) {
-                return right;
-            }
-            return player;
-        });
-        updatedTeams[elementIndex2].players = updatedTeams[elementIndex2].players.map((player) => {
-            if (player.person_id === right.person_id) {
-                return left;
-            }
-            return player;
-        });
+        replacePlayer(updatedTeams[elementIndex1], left, right);
+        replacePlayer(updatedTeams[elementIndex2], right, left);
         this.setState({
             allTeams: updatedTeams,
+            tradeHistory: [...this.state.tradeHistory, `${playerName(left)} for ${playerName(right)}`]
         });
     }
 
@@ -91,9 +92,15 @@ class App extends Component {
                     const tradeButton = selected && this.renderTradeButton();
                     return (
                         <div className={`player-card ${selected}`} onClick={() => this.selectPlayer(player, side)}>
-                            <div className="player-name">{`${first_name} ${last_name}`}</div>
-                            <div className="player-jersey">{`Jersey #${jersey_number}`}</div>
-                            <div className="player-position">{`Position: ${position_full}`}</div>
+                            <div className="player-name">{playerName(player)}</div>
+                            {/* <div className="player-name">{`${first_name} ${last_name}`}</div> */}
+                            <div className="player-specs">
+                                <span>{`#${jersey_number}`}</span>
+                                <span> &#8226; </span>
+                                <span>{`${position_full}`}</span>
+                            </div>
+                            {/* <div className="player-jersey">{`Jersey #${jersey_number}`}</div> */}
+                            {/* <div className="player-position">{`Position: ${position_full}`}</div> */}
                             <div className="player-height">{`Height: ${height_ft}"${height_in}`}</div>
                             <div className="player-weight">{`Weight: ${weight_lbs} lbs`}</div>
                             {tradeButton}
@@ -103,6 +110,14 @@ class App extends Component {
             </div>
         )
     }
+
+    // getTradeHistory() {
+    //     return (
+    //         <div className="trade-history">
+    //             { this.state.tradeHistory.map((trade) => <div className="trade">{trade}</div>) }
+    //         </div>
+    //     )
+    // }
 
     render() {
         const { allTeams, team1, team2 } = this.state;
