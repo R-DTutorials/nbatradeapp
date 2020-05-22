@@ -1,14 +1,11 @@
 import React , { Component } from 'react';
-import PlayerCard from "./PlayerCard";
+import SelectTeam from "./components/SelectTeam";
+import PlayerCard from "./components/PlayerCard";
+// import TradeHistory from "./TradeHistory";
 import data from './data';
 import './App.css';
 
 const playerName = ({ first_name, last_name }) => `${first_name} ${last_name}`;
-
-const getTeamsDropdown = (teams) => (
-    teams && teams.map(({ team }) =>
-        <option key={team.team_code} value={team.team_code}>{`${team.team_city} ${team.team_nickname}`}</option>
-));
 
 const replacePlayer = (roster, tradingAway, tradingFor) => {
     roster.players = roster.players.map(player => (
@@ -35,7 +32,7 @@ class App extends Component {
     }
 
     selectPlayer(player, side) {
-        console.log(player)
+        console.log('selected:',player)
         const currentPlayerId = this.state[side].person_id;
         this.setState({
             [side]: currentPlayerId !== player.person_id ? player : '',
@@ -44,6 +41,7 @@ class App extends Component {
 
     executeTrade() {
         const { allTeams, team1, team2, left, right } = this.state;
+        console.log(`Trading ${playerName(left)} for ${playerName(right)}`)
         let elementIndex1 = null;
         let elementIndex2 = null;
         allTeams.forEach((franchise, index) => {
@@ -59,7 +57,8 @@ class App extends Component {
         replacePlayer(updatedTeams[elementIndex2], right, left);
         this.setState({
             allTeams: updatedTeams,
-            tradeHistory: [...this.state.tradeHistory, `${playerName(left)} for ${playerName(right)}`]
+            left: '',
+            right: ''
         });
     }
 
@@ -79,46 +78,18 @@ class App extends Component {
         return (
             <div className="card-container">
                 {franchise[0].players.map((player) => {
-                    const {
-                        first_name,
-                        last_name,
-                        jersey_number,
-                        person_id,
-                        height_ft,
-                        height_in,
-                        position_full,
-                        weight_lbs,
-                    } = player;
-                    const selected = this.state[side].person_id === person_id ? 'selected' : '';
-                    const tradeButton = selected && this.renderTradeButton();
                     return (
-                        <div className={`player-card ${selected}`} onClick={() => this.selectPlayer(player, side)}>
-                            <div className="player-name">{playerName(player)}</div>
-                            {/* <div className="player-name">{`${first_name} ${last_name}`}</div> */}
-                            <div className="player-specs">
-                                <span>{`#${jersey_number}`}</span>
-                                <span> &#8226; </span>
-                                <span>{`${position_full}`}</span>
-                            </div>
-                            {/* <div className="player-jersey">{`Jersey #${jersey_number}`}</div> */}
-                            {/* <div className="player-position">{`Position: ${position_full}`}</div> */}
-                            <div className="player-height">{`Height: ${height_ft}"${height_in}`}</div>
-                            <div className="player-weight">{`Weight: ${weight_lbs} lbs`}</div>
-                            {tradeButton}
-                        </div>
+                        <PlayerCard
+                            player={player}
+                            selected={this.state[side].person_id === player.person_id ? 'selected' : ''}
+                            selectPlayer={() => this.selectPlayer(player,side)}
+                            getTradeButton={() => this.renderTradeButton()}
+                        />
                     );
                 })}
             </div>
         )
     }
-
-    // getTradeHistory() {
-    //     return (
-    //         <div className="trade-history">
-    //             { this.state.tradeHistory.map((trade) => <div className="trade">{trade}</div>) }
-    //         </div>
-    //     )
-    // }
 
     render() {
         const { allTeams, team1, team2 } = this.state;
@@ -129,15 +100,22 @@ class App extends Component {
             <div className="App">
                 <header className="App-header">NBA Trade Simulator: Analyze and create customized trade scenarios for NBA teams and players.</header>
                 <div className="select-container">
-                    <select name="team1" id="team1" onChange={ (e) => this.setTeam(e, 'team1') } value={this.state.team1}>
-                        {getTeamsDropdown(allTeams.filter(franchise => franchise.team.team_code !== this.state.team2))}
-                    </select>
-                    <select name="team2" id="team2" onChange={ (e) => this.setTeam(e, 'team2') } value={this.state.team2}>
-                        {getTeamsDropdown(allTeams.filter(franchise => franchise.team.team_code !== this.state.team1))}
-                    </select>
+                    <SelectTeam
+                        id="team1"
+                        availableTeams={allTeams.filter(franchise => franchise.team.team_code !== this.state.team2)}
+                        setTeam={(e) => this.setTeam(e, 'team1')}
+                        team={team1}
+                    />
+                    <SelectTeam
+                        id="team2"
+                        availableTeams={allTeams.filter(franchise => franchise.team.team_code !== this.state.team1)}
+                        setTeam={(e) => this.setTeam(e, 'team2')}
+                        team={team2}
+                    />
                 </div>
                 {playerCards1}
                 {playerCards2}
+                {/* <TradeHistory history={this.state.tradeHistory} /> */}
             </div>
         )
     }
