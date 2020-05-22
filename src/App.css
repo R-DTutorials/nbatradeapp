@@ -45,6 +45,10 @@
   border: solid 2px #EE275A;
 }
 
+.player-card.selected:hover {
+  border: solid 2px #EE275A;
+}
+
 .player-card:hover {
   border-color: #282C34;
   transform: scale(1.04);
