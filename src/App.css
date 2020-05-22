@@ -60,6 +60,12 @@
   line-height: 2;
 }
 
+.player-specs {
+  color: #4d5158;
+  font-size: 18px;
+  line-height: 2;
+}
+
 .trade-button {
   position: absolute;
   top: 20px;
