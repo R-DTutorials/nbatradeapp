@@ -37,7 +37,6 @@ class App extends Component {
     selectPlayer(player, side) {
         console.log(player)
         if (this.state[side].person_id === player.person_id) {
-            console.log("woah")
             this.setState({
                 [side]: '',
             })
