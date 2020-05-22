@@ -36,16 +36,10 @@ class App extends Component {
 
     selectPlayer(player, side) {
         console.log(player)
-        if (this.state[side].person_id === player.person_id) {
-            this.setState({
-                [side]: '',
-            })
-        }
-        else {
-            this.setState({
-                [side]: player,
-            });
-        }
+        const currentPlayerId = this.state[side].person_id;
+        this.setState({
+            [side]: currentPlayerId !== player.person_id ? player : '',
+        });
     }
 
     executeTrade() {
