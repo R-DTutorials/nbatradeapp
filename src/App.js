@@ -1,11 +1,8 @@
 import React , { Component } from 'react';
 import SelectTeam from "./components/SelectTeam";
-import PlayerCard from "./components/PlayerCard";
-// import TradeHistory from "./TradeHistory";
+import Roster from "./components/Roster";
 import data from './data';
 import './App.css';
-
-const playerName = ({ first_name, last_name }) => `${first_name} ${last_name}`;
 
 const replacePlayer = (roster, tradingAway, tradingFor) => {
     roster.players = roster.players.map(player => (
@@ -32,7 +29,6 @@ class App extends Component {
     }
 
     selectPlayer(player, side) {
-        console.log('selected:',player)
         const currentPlayerId = this.state[side].person_id;
         this.setState({
             [side]: currentPlayerId !== player.person_id ? player : '',
@@ -41,7 +37,6 @@ class App extends Component {
 
     executeTrade() {
         const { allTeams, team1, team2, left, right } = this.state;
-        console.log(`Trading ${playerName(left)} for ${playerName(right)}`)
         let elementIndex1 = null;
         let elementIndex2 = null;
         allTeams.forEach((franchise, index) => {
@@ -73,29 +68,8 @@ class App extends Component {
         }
     }
 
-    renderPlayers(team, side) {
-        const franchise = this.state.allTeams.filter((franchise) => franchise.team.team_code === team);
-        return (
-            <div className="card-container">
-                {franchise[0].players.map((player) => {
-                    return (
-                        <PlayerCard
-                            player={player}
-                            selected={this.state[side].person_id === player.person_id ? 'selected' : ''}
-                            selectPlayer={() => this.selectPlayer(player,side)}
-                            getTradeButton={() => this.renderTradeButton()}
-                        />
-                    );
-                })}
-            </div>
-        )
-    }
-
     render() {
         const { allTeams, team1, team2 } = this.state;
-        const playerCards1 = this.renderPlayers(team1, 'left');
-        const playerCards2 = this.renderPlayers(team2, 'right');
-        console.log(this.state)
         return (
             <div className="App">
                 <header className="App-header">NBA Trade Simulator: Analyze and create customized trade scenarios for NBA teams and players.</header>
@@ -113,9 +87,18 @@ class App extends Component {
                         team={team2}
                     />
                 </div>
-                {playerCards1}
-                {playerCards2}
-                {/* <TradeHistory history={this.state.tradeHistory} /> */}
+                <Roster
+                    franchise={this.state.allTeams.filter((franchise) => franchise.team.team_code === team1)}
+                    side={this.state.left}
+                    selectPlayer={(player) => this.selectPlayer(player,"left")}
+                    getTradeButton={() => this.renderTradeButton()}
+                />
+                <Roster
+                    franchise={this.state.allTeams.filter((franchise) => franchise.team.team_code === team2)}
+                    side={this.state.right}
+                    selectPlayer={(player) => this.selectPlayer(player,"right")}
+                    getTradeButton={() => this.renderTradeButton()}
+                />
             </div>
         )
     }
