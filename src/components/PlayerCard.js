@@ -2,7 +2,7 @@ import React from 'react';
 import './PlayerCard.css';
 
 const PlayerCard = (props) => {
-	const { player, selected, selectPlayer, getTradeButton } = props;
+	const { eligible, player, selected, selectPlayer, getTradeButton } = props;
 	const {
 		first_name,
 		last_name,
@@ -14,7 +14,7 @@ const PlayerCard = (props) => {
 	} = player;
 
 	return (
-		<div className={`player-card ${selected}`} onClick={selectPlayer}>
+		<div className={`player-card ${selected} ${eligible}`} onClick={selectPlayer}>
 			<div className="player-name">{`${first_name} ${last_name}`}</div>
 			<div className="player-specs">
 				<span>{`#${jersey_number}`}</span>

@@ -75,12 +75,14 @@ class App extends Component {
 
     renderPlayers(team, side) {
         const franchise = this.state.allTeams.filter((franchise) => franchise.team.team_code === team);
+        const eligible = this.state.left !== '' && this.state.right !== '';
         return (
             <div className="card-container">
                 {franchise[0].players.map((player) => {
                     return (
                         <PlayerCard
                             player={player}
+                            eligible={eligible ? 'eligible' : ''}
                             selected={this.state[side].person_id === player.person_id ? 'selected' : ''}
                             selectPlayer={() => this.selectPlayer(player,side)}
                             getTradeButton={() => this.renderTradeButton()}
