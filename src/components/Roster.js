@@ -6,6 +6,8 @@ const Roster = ({ franchise, side, ...otherProps }) => (
         {franchise[0].players.map((player) => {
             return (
                 <PlayerCard
+                    key={player.person_id}
+                    teamAbbreviation={franchise[0].team.team_abbrev}
                     player={player}
                     selected={side.person_id === player.person_id ? 'selected' : ''}
                     { ...otherProps }

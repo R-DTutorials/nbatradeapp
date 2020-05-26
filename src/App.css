@@ -11,19 +11,14 @@
   font-weight: 800;
   text-align: left;
 }
-.select-container {
-
-}
 
 #team1, #team2 {
   width: 502px;
-  margin: 40px 10px;
+  margin: 40px 15px;
   height: 40px;
 }
 
-
 .card-container {
   display: inline-grid;
-  /*overflow-y: scroll;*/
   height: 800px;
 }
