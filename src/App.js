@@ -1,7 +1,10 @@
+// (1) Start with create-react-app, remove defaults, add custom stylesheet
 import React , { Component } from 'react';
 import SelectTeam from "./components/SelectTeam";
 import Roster from "./components/Roster";
+// (2) Get data from nba git repo, created league w/ teams + players
 import data from './data';
+// (3) Custom Stylesheet
 import './App.css';
 
 const replacePlayer = (roster, tradingAway, tradingFor) => {
