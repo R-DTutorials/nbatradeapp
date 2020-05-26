@@ -13,16 +13,21 @@
 }
 
 .player-card.selected {
-    border: solid 2px #EE275A;
+    background-color: #EE275A;
+    color: #ffffff;
 }
 
-.player-card.selected:hover {
-    border: solid 2px #EE275A;
+.player-card.selected.eligible {
+    background-color: #1977F2;
+    border-color: #1977F2;
+    color: #ffffff;
 }
 
 .player-card:hover {
-    border-color: #282C34;
+    border-color: #EE275A;
     transform: scale(1.04);
+    background-color: #EE275A;
+    color: #ffffff;
 }
 
 .player-name {
@@ -32,7 +37,7 @@
 }
 
 .player-specs {
-    color: #4d5158;
+    /* color: #4d5158; */
     font-size: 18px;
     line-height: 2;
 }
@@ -41,17 +46,16 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    border: solid 2px #EE275A;
+    border: solid 2px #fff;
     padding: 5px 20px;
     border-radius: 2px;
     text-align: center;
     font-size: 20px;
-    background-color: #EE275A;
+    background-color: #1977F2;
     transition: all 0.2s;
 }
 
 .trade-button:hover {
-    background-color: #EE275A;
     transform: scale(1.1);
 }
 

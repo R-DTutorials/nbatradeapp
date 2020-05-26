@@ -70,6 +70,7 @@ class App extends Component {
 
     render() {
         const { allTeams, team1, team2 } = this.state;
+        const eligible = this.state.left !== '' && this.state.right !== '';
         return (
             <div className="App">
                 <header className="App-header">NBA Trade Simulator: Analyze and create customized trade scenarios for NBA teams and players.</header>
@@ -88,12 +89,14 @@ class App extends Component {
                     />
                 </div>
                 <Roster
+                    eligible={eligible ? 'eligible' : ''}
                     franchise={this.state.allTeams.filter((franchise) => franchise.team.team_code === team1)}
                     side={this.state.left}
                     selectPlayer={(player) => this.selectPlayer(player,"left")}
                     getTradeButton={() => this.renderTradeButton()}
                 />
                 <Roster
+                    eligible={eligible ? 'eligible' : ''}
                     franchise={this.state.allTeams.filter((franchise) => franchise.team.team_code === team2)}
                     side={this.state.right}
                     selectPlayer={(player) => this.selectPlayer(player,"right")}
