@@ -7,7 +7,7 @@ const experience = {
 };
 
 const PlayerCard = (props) => {
-	const { player, selected, selectPlayer, getTradeButton } = props;
+	const { player, selected, selectPlayer, getTradeButton, eligible } = props;
 	const {
 		first_name,
 		last_name,
@@ -20,7 +20,7 @@ const PlayerCard = (props) => {
 	} = player;
 
 	return (
-		<div className={`player-card ${selected}`} onClick={() => selectPlayer(player)}>
+		<div className={`player-card ${selected} ${eligible}`} onClick={() => selectPlayer(player)}>
 			<div className="player-name">{`${first_name} ${last_name}`}</div>
 			<div className="player-specs">
 				<span>{`#${jersey_number}`}</span>
