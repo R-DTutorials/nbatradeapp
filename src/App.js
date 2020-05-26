@@ -1,12 +1,16 @@
-// (1) Start with create-react-app, remove defaults, add custom stylesheet
+// (1)
+// Start with create-react-app, remove defaults, add custom stylesheet
 import React , { Component } from 'react';
 import SelectTeam from "./components/SelectTeam";
 import Roster from "./components/Roster";
-// (2) Get data from nba git repo, created league w/ teams + players
+// (2)
+// Get data from nba git repo, created league w/ teams + players
 import data from './data';
-// (3) Custom Stylesheet
+// (3)
+// Custom Stylesheet
 import './App.css';
 
+// Find the player we are trading away, and replace them with the new player
 const replacePlayer = (roster, tradingAway, tradingFor) => {
     roster.players = roster.players.map(player => (
         player.person_id === tradingAway.person_id ? tradingFor : player
