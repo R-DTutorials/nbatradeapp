@@ -31,6 +31,7 @@ class App extends Component {
         this.selectPlayer = this.selectPlayer.bind(this);
     }
 
+    // take the event which is given from 'onChange' of the team-select, to set either "team1" || "team2"
     setTeam(e, team) {
         this.setState({ [team]: e.target.value });
     }
