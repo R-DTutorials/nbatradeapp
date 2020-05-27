@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/nbatradeapp/static/css/main.edfc1f6f.chunk.css",
+    "main.js": "/nbatradeapp/static/js/main.4f9e7b27.chunk.js",
+    "main.js.map": "/nbatradeapp/static/js/main.4f9e7b27.chunk.js.map",
+    "runtime-main.js": "/nbatradeapp/static/js/runtime-main.0c18265f.js",
+    "runtime-main.js.map": "/nbatradeapp/static/js/runtime-main.0c18265f.js.map",
+    "static/js/2.8f3d162d.chunk.js": "/nbatradeapp/static/js/2.8f3d162d.chunk.js",
+    "static/js/2.8f3d162d.chunk.js.map": "/nbatradeapp/static/js/2.8f3d162d.chunk.js.map",
+    "index.html": "/nbatradeapp/index.html",
+    "precache-manifest.0348cd714e4e8125f9386ec8db32e4d6.js": "/nbatradeapp/precache-manifest.0348cd714e4e8125f9386ec8db32e4d6.js",
+    "service-worker.js": "/nbatradeapp/service-worker.js",
+    "static/css/main.edfc1f6f.chunk.css.map": "/nbatradeapp/static/css/main.edfc1f6f.chunk.css.map",
+    "static/js/2.8f3d162d.chunk.js.LICENSE.txt": "/nbatradeapp/static/js/2.8f3d162d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0c18265f.js",
+    "static/js/2.8f3d162d.chunk.js",
+    "static/css/main.edfc1f6f.chunk.css",
+    "static/js/main.4f9e7b27.chunk.js"
+  ]
+}
