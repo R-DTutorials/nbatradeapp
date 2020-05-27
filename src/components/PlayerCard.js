@@ -17,8 +17,8 @@ const PlayerCard = (props) => {
 		position_full,
 		weight_lbs,
 		years_pro,
-	} = player;
-
+	} = player; // player object stats
+	// if the corresponding player card is selected in the state and the 'left' and 'right' are both chosen then show the trade button for those 2 player cards
 	return (
 		<div className={`player-card ${selected} ${eligible}`} onClick={() => selectPlayer(player)}>
 			<div className="player-name">{`${first_name} ${last_name}`}</div>

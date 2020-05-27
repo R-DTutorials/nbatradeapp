@@ -3,7 +3,7 @@ import PlayerCard from "./PlayerCard";
 
 const Roster = ({ franchise, side, ...otherProps }) => (
     <div className="card-container">
-        {franchise[0].players.map((player) => {
+        {franchise[0].players.map((player) => { // render playercards for selected franchise
             return (
                 <PlayerCard
                     key={player.person_id}
