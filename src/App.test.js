@@ -201,19 +201,19 @@ selectPlayer(player, side) {
 // Also pass the function selectPlayer so we can set a new player
 <Roster
   franchise={this.state.allTeams.filter((franchise) => franchise.team.team_code === team1)} // filters all teams to only pass the selected teams data in order to render the player cards for that team
-  side={this.state.right} // this prop passes down the player object info from the corresponding side to PlayerCard to render certain player
+  selected={this.state.right} // this prop passes down the player object info from the corresponding side to PlayerCard to render certain player
   selectPlayer={(player) => this.selectPlayer(player,"right")} // func that selects player (sets player object in state) which is called when user clicks on the PlayerCard
 />
 
 // Pass chosen player and func to select player through to PlayerCard
-const Roster = ({ franchise, side, ...otherProps }) => (
+const Roster = ({ franchise, selected, ...otherProps }) => (
   <div className="card-container">
       {franchise[0].players.map((player) => { // render playercards for selected franchise
           return (
               <PlayerCard
                   key={player.person_id}
                   player={player}
-                  selected={side.person_id === player.person_id ? 'selected' : ''}
+                  selected={selected.person_id === player.person_id ? 'selected' : ''}
                   { ...otherProps }
               />
           );

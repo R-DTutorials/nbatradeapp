@@ -1,7 +1,7 @@
 import React from 'react';
 import PlayerCard from "./PlayerCard";
 
-const Roster = ({ franchise, side, ...otherProps }) => (
+const Roster = ({ franchise, selected, ...otherProps }) => (
     <div className="card-container">
         {franchise[0].players.map((player) => { // render playercards for selected franchise
             return (
@@ -9,7 +9,7 @@ const Roster = ({ franchise, side, ...otherProps }) => (
                     key={player.person_id}
                     teamAbbreviation={franchise[0].team.team_abbrev}
                     player={player}
-                    selected={side.person_id === player.person_id ? 'selected' : ''}
+                    selected={selected.person_id === player.person_id ? 'selected' : ''}
                     { ...otherProps }
                 />
             );

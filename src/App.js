@@ -106,14 +106,14 @@ class App extends Component {
                 <Roster
                     eligible={eligible ? 'eligible' : ''}
                     franchise={this.state.allTeams.filter((franchise) => franchise.team.team_code === team1)} // filters all teams to only pass the selected teams data in order to render the player cards for that team
-                    side={this.state.left} // this prop passes down the player object info from the corresponding side to PlayerCard to render certain player
+                    selected={this.state.left} // this prop passes down the player object info from the corresponding side to PlayerCard to render certain player
                     selectPlayer={(player) => this.selectPlayer(player,"left")} // func that selects player (sets player object in state) which is called when user clicks on the PlayerCard
                     getTradeButton={() => this.renderTradeButton()}
                 />
                 <Roster
                     eligible={eligible ? 'eligible' : ''}
                     franchise={this.state.allTeams.filter((franchise) => franchise.team.team_code === team2)} // filters all teams to only pass the selected teams data in order to render the player cards for that team
-                    side={this.state.right} // this prop passes down the player object info from the corresponding side to PlayerCard to render certain player
+                    selected={this.state.right} // this prop passes down the player object info from the corresponding side to PlayerCard to render certain player
                     selectPlayer={(player) => this.selectPlayer(player,"right")} // func that selects player (sets player object in state) which is called when user clicks on the PlayerCard
                     getTradeButton={() => this.renderTradeButton()}
                 />
