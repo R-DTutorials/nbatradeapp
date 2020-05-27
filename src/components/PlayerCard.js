@@ -1,5 +1,4 @@
 import React from 'react';
-import './PlayerCard.css';
 
 const experience = {
 	0: 'Rookie',

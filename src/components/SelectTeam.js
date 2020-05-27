@@ -1,5 +1,4 @@
 import React from 'react';
-import './PlayerCard.css';
 
 const SelectTeam = (props) => {
     // id = "team1" || "team2"
@@ -8,7 +7,7 @@ const SelectTeam = (props) => {
     // value => this will get passed into the 'onChange' event for us to set into state, example => 'kings' || 'nets'
     const {id, availableTeams, setTeam, team} = props;
     return (
-        <select name={id} id={id} onChange={ (e) => setTeam(e, 'team1') } value={team}>
+        <select name={id} id={id} onChange={setTeam} value={team}>
             {
                 // return an <option> for each team, only excluding the team set on the opposite side of the trade
                 availableTeams && availableTeams.map(({ team }) =>

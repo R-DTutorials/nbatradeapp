@@ -87,8 +87,8 @@ class App extends Component {
         const { allTeams, team1, team2 } = this.state;
         const eligible = this.state.left !== '' && this.state.right !== ''; // true if a player is selected on left and right
         return (
-            <div className="App">
-                <header className="App-header">NBA Trade Simulator: Analyze and create customized trade scenarios for NBA teams and players.</header>
+            <div className="app">
+                <header className="header">NBA Trade Simulator: Analyze and create customized trade scenarios for NBA teams and players.</header>
                 <div className="select-container">
                     <SelectTeam
                         id="team1"
