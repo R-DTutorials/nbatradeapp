@@ -1,5 +1,5 @@
 // Start with create-react-app, remove defaults, add custom stylesheet
-import React , { Component } from 'react';
+import React, { Component } from 'react';
 
 // Custom Stylesheet
 import './App.css';
@@ -180,6 +180,9 @@ const PlayerCard = (props) => {
 
 export default PlayerCard;
 
+// Add player card to roster
+import PlayerCard from "./PlayerCard";
+
 // set empty values in the state that we will populate with the players select for trade (left, right)
 this.state = {
   left: '',
@@ -212,6 +215,7 @@ const Roster = ({ franchise, selected, ...otherProps }) => (
           return (
               <PlayerCard
                   key={player.person_id}
+                  teamAbbreviation={franchise[0].team.team_abbrev}
                   player={player}
                   selected={selected.person_id === player.person_id ? 'selected' : ''}
                   { ...otherProps }
@@ -220,3 +224,82 @@ const Roster = ({ franchise, selected, ...otherProps }) => (
       })}
   </div>
 );
+
+// Use the newly passed props, selected & selectPlayer, we should be able to see selections in the browser
+const { player, selectPlayer, teamAbbreviation, selected } = props;
+return (
+  <div className={`player-card ${selected}`} onClick={() => selectPlayer(player)}>
+    ...
+  </div>
+);
+
+// In App.js render(), we can add a variable to let us know when its eligible for trade
+const eligible = this.state.left !== '' && this.state.right !== ''; // true if a player is selected on left and right
+    // show trade button if a two player cards are selected (if left and right are both not empty strings)
+    // onClick will execute the trade function to swap the players (this.executeTrade)
+renderTradeButton() {
+  const { left, right } = this.state;
+  if (left && right) {
+    return (
+        <div className="trade-button">
+            <span className="trade-symbol">&#8594;</span>
+        </div>
+    )
+  }
+}
+// In App.js Pass 'eligible' and 'tradeBtn' to <Roster>
+<Roster
+  eligible={eligible ? 'eligible' : ''}
+  franchise={this.state.allTeams.filter((franchise) => franchise.team.team_code === team1)} // filters all teams to only pass the selected teams data in order to render the player cards for that team
+  selected={this.state.left} // this prop passes down the player object info from the corresponding side to PlayerCard to render certain player
+  selectPlayer={(player) => this.selectPlayer(player,"left")} // func that selects player (sets player object in state) which is called when user clicks on the PlayerCard
+  getTradeButton={() => this.renderTradeButton()}
+/>
+
+// Get 'eligible' and 'tradeBtn' in <PlayerCard/>
+const { getTradeButton, eligible } = props;
+return (
+  <div className={`player-card ${selected} ${eligible}`}>
+    ...
+    {selected && getTradeButton()}
+  </div>
+);
+
+// In <App> we need to make a func that will execute the trade 'onClick'
+<div className="trade-button" onClick={() => this.executeTrade()}>
+  ...
+</div>
+
+executeTrade() {
+  const { allTeams, team1, team2, left, right } = this.state;
+  // Find the index of the two teams involved in the trade so we can swap the players
+  let elementIndex1 = null;
+  let elementIndex2 = null;
+  allTeams.forEach((franchise, index) => {
+    if (franchise.team.team_code === team1) {
+      elementIndex1 = index;
+    }
+    if (franchise.team.team_code === team2) {
+      elementIndex2 = index;
+    }
+  });
+   // create a copy of allTeams that we can modify and then set into state
+  let updatedTeams = [...allTeams];
+}
+// create a function that will take the team and swap its player for the other
+const replacePlayer = (roster, tradingAway, tradingFor) => {
+  roster.players = roster.players.map(player => (
+      player.person_id === tradingAway.person_id ? tradingFor : player
+  ));
+};
+// Use 'replacePlayer' in executeTrade on both teams and then update the state
+executeTrade() {
+  ...
+  replacePlayer(updatedTeams[elementIndex1], left, right);
+  replacePlayer(updatedTeams[elementIndex2], right, left);
+  this.setState({
+      allTeams: updatedTeams,
+      left: '',
+      right: ''
+  });
+}
