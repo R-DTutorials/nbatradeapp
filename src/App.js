@@ -69,36 +69,36 @@ class App extends Component {
     }
 
     render() {
-        const { allTeams, team1, team2 } = this.state;
-        const eligible = this.state.left !== '' && this.state.right !== '';
+        const { allTeams, team1, team2, left, right } = this.state;
+        const eligible = left !== '' && right !== '';
         return (
             <div className="App">
                 <header className="App-header">NBA Trade Simulator: Analyze and create customized trade scenarios for NBA teams and players.</header>
                 <div className="select-container">
                     <SelectTeam
                         id="team1"
-                        availableTeams={allTeams.filter(franchise => franchise.team.team_code !== this.state.team2)}
+                        availableTeams={allTeams.filter(franchise => franchise.team.team_code !== team2)}
                         setTeam={(e) => this.setTeam(e, 'team1')}
                         team={team1}
                     />
                     <SelectTeam
                         id="team2"
-                        availableTeams={allTeams.filter(franchise => franchise.team.team_code !== this.state.team1)}
+                        availableTeams={allTeams.filter(franchise => franchise.team.team_code !== team1)}
                         setTeam={(e) => this.setTeam(e, 'team2')}
                         team={team2}
                     />
                 </div>
                 <Roster
                     eligible={eligible ? 'eligible' : ''}
-                    franchise={this.state.allTeams.filter((franchise) => franchise.team.team_code === team1)}
-                    side={this.state.left}
+                    franchise={allTeams.filter((franchise) => franchise.team.team_code === team1)}
+                    side={left}
                     selectPlayer={(player) => this.selectPlayer(player,"left")}
                     getTradeButton={() => this.renderTradeButton()}
                 />
                 <Roster
                     eligible={eligible ? 'eligible' : ''}
-                    franchise={this.state.allTeams.filter((franchise) => franchise.team.team_code === team2)}
-                    side={this.state.right}
+                    franchise={allTeams.filter((franchise) => franchise.team.team_code === team2)}
+                    side={right}
                     selectPlayer={(player) => this.selectPlayer(player,"right")}
                     getTradeButton={() => this.renderTradeButton()}
                 />
