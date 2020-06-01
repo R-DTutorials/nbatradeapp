@@ -8,11 +8,7 @@ const SelectTeam = (props) => {
     const {id, availableTeams, setTeam, team} = props;
     return (
         <select name={id} id={id} onChange={setTeam} value={team}>
-            {
-                // return an <option> for each team, only excluding the team set on the opposite side of the trade
-                availableTeams && availableTeams.map(({ team }) =>
-                    <option key={team.team_code} value={team.team_code}>{`${team.team_city} ${team.team_nickname}`}</option>)
-            }
+            {availableTeams.map(({ team }) => <option key={team.team_code} value={team.team_code}>{`${team.team_city} ${team.team_nickname}`}</option>)}
         </select>
     );
 };

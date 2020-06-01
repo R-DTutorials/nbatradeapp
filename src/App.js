@@ -84,36 +84,36 @@ class App extends Component {
     }
 
     render() {
-        const { allTeams, team1, team2 } = this.state;
-        const eligible = this.state.left !== '' && this.state.right !== ''; // true if a player is selected on left and right
+        const { allTeams, team1, team2, left, right } = this.state;
+        const eligible = left !== '' && right !== ''; // true if a player is selected on left and right
         return (
             <div className="app">
                 <header className="header">NBA Trade Simulator: Analyze and create customized trade scenarios for NBA teams and players.</header>
                 <div className="select-container">
                     <SelectTeam
                         id="team1"
-                        availableTeams={allTeams.filter(franchise => franchise.team.team_code !== this.state.team2)} // renders all teams except the team that is shown on the other side
+                        availableTeams={allTeams.filter(franchise => franchise.team.team_code !== team2)} // renders all teams except the team that is shown on the other side
                         setTeam={(e) => this.setTeam(e, 'team1')} // when clicking on team in dropdown this func sets the team value in the state under 'team1' porperty or 'team2' property
                         team={team1} // prop that is a string that is the team currently selected in the dropdown
                     />
                     <SelectTeam
                         id="team2"
-                        availableTeams={allTeams.filter(franchise => franchise.team.team_code !== this.state.team1)} // renders all teams except the team that is shown on the other side
+                        availableTeams={allTeams.filter(franchise => franchise.team.team_code !== team1)} // renders all teams except the team that is shown on the other side
                         setTeam={(e) => this.setTeam(e, 'team2')}// when clicking on team in dropdown this func sets the team value in the state under 'team1' porperty or 'team2' property
                         team={team2} // prop that is a string that is the team currently selected in the dropdown
                     />
                 </div>
                 <Roster
                     eligible={eligible ? 'eligible' : ''}
-                    franchise={this.state.allTeams.filter((franchise) => franchise.team.team_code === team1)} // filters all teams to only pass the selected teams data in order to render the player cards for that team
-                    selected={this.state.left} // this prop passes down the player object info from the corresponding side to PlayerCard to render certain player
+                    franchise={allTeams.filter((franchise) => franchise.team.team_code === team1)} // filters all teams to only pass the selected teams data in order to render the player cards for that team
+                    selected={left} // this prop passes down the player object info from the corresponding side to PlayerCard to render certain player
                     selectPlayer={(player) => this.selectPlayer(player,"left")} // func that selects player (sets player object in state) which is called when user clicks on the PlayerCard
                     getTradeButton={() => this.renderTradeButton()}
                 />
                 <Roster
                     eligible={eligible ? 'eligible' : ''}
-                    franchise={this.state.allTeams.filter((franchise) => franchise.team.team_code === team2)} // filters all teams to only pass the selected teams data in order to render the player cards for that team
-                    selected={this.state.right} // this prop passes down the player object info from the corresponding side to PlayerCard to render certain player
+                    franchise={allTeams.filter((franchise) => franchise.team.team_code === team2)} // filters all teams to only pass the selected teams data in order to render the player cards for that team
+                    selected={right} // this prop passes down the player object info from the corresponding side to PlayerCard to render certain player
                     selectPlayer={(player) => this.selectPlayer(player,"right")} // func that selects player (sets player object in state) which is called when user clicks on the PlayerCard
                     getTradeButton={() => this.renderTradeButton()}
                 />
